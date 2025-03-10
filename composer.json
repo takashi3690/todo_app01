@@ -1,0 +1,19 @@
+{
+    "name": "tomat/todo-app",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Tomat\\TodoApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "waseda",
+            "email": "mkata9945@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
