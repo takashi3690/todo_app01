@@ -9,8 +9,12 @@
 <body>
 <h1>「」の編集画面</h1>
 <form id="add" action="edit.php" method="post" novalidate>
-    <textarea class="form" name="edit" id="" cols="50" rows="10"></textarea>
-    <p><input type="submit" value="送信"></p>
+    <textarea class="form" name="edit" id="edit_id" cols="50" rows="10"></textarea>
+    <p>
+        <input type="submit" value="更新">
+        <input type='hidden' name='update' value='<?php echo $data['id']; ?>' />
+    </p>
+    <a href="todo.php">戻る</a>
 </form>
 </body>
 </html>
