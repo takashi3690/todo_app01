@@ -12,8 +12,6 @@
     <?php
     print("<p>データを更新しました。TODOリストに戻ります。</p>");
     header("refresh:3;url=todo.php");
-
     ?>
 </body>
-
 </html>
