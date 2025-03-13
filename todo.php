@@ -28,11 +28,11 @@ require_once __DIR__ . '/Models/sample_item.php';
                     <input type="hidden" name="id" value="<?php echo $column['id']; ?>">
                 </form>
                 <!-- 更新ボタン -->
-                <form id='update' action='edit.php' method='post'>
+                <form id='update' action='Models/edit.php' method='post'>
                     <input class="edit-btn" type='submit' value='編集' />
-                    <input type='hidden' name='update' value='<?php echo $data['id']; ?>' />
+                    <input type='hidden' name='update' value='<?php echo $column['id']; ?>' />
                 </form>
-            </div>
-            <?php endforeach; ?> </div> 
+            </div> <?php endforeach; ?>
+        </div>
     </body>
 </html>
