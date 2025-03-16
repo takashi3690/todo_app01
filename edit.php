@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/Models/edit.php';
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -6,27 +10,17 @@
         <link rel="stylesheet" href="style.css">
         <title>更新画面</title>
     </head>
-    <body>
-    <?php
-    // $dataListが空でない場合にforeachを実行
-    if (!empty($dataList)) {
+    <body> <?php
         foreach ($dataList as $data):
-            if (isset($update) && $data['id'] == $update):  // 更新するデータのIDと一致する場合
-                ?>
-                <p>「<?php echo htmlspecialchars($data['todo']); ?>」の編集画面</p>
-                <form id="decision" action="Models/edit.php" method="post">
-                    <textarea class="form" name="newdata" rows="3" cols="20" wrap="hard"><?php echo htmlspecialchars($data['todo']); ?></textarea>
-                    <input class="update-btn submit-btn" type="submit" value="更新" />
-                    <input type="hidden" name="decision" value="<?php echo $data['id']; ?>" />
-                </form>
-                <?php
-            endif;
+                ?> <p>「<?php echo htmlspecialchars($data['todo']); ?>」の編集画面</p>
+        <form id="decision" action="edit.php" method="post">
+            <textarea class="form" name="newdata" rows="3" cols="20" wrap="hard"><?php echo htmlspecialchars($data['todo']); ?></textarea>
+            <input class="update-btn submit-btn" type="submit" value="更新" />
+            <input type="hidden" name="decision" value="<?php echo $update; ?>" />
+        </form> <?php
         endforeach;
-    } else {
-        echo "データがありません。";
-    }
     ?>
-</body>
-</html>
     </body>
+</html>
+</body>
 </html>

@@ -47,7 +47,7 @@ require_once(dirname(__FILE__) . '/DB.php');
         $stmt = $pdo->prepare('SELECT * FROM sample_item ORDER BY tododate DESC');
         $stmt->execute();
 
-        $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $dataList = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
     } catch (PDOException $e) {
         header('Content-Type: text/plain; charset=UTF-8', true, 500);
