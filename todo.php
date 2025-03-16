@@ -18,7 +18,8 @@ require_once __DIR__ . '/Models/sample_item.php';
         <form id="add" action="todo.php" method="post" novalidate>
             <textarea class="form" name="data" cols="50" rows="10" id="target"></textarea>
             <input class="submit-btn add-btn" type="submit" value="追加" onclick="changeColor('target');">
-        </form> <?php foreach ($dataList as $data):?> <div class="group" style="margin-top: 30px;">
+        </form>
+        <p><a href="calendar.php">カレンダー</a></p> <?php foreach ($dataList as $data):?> <div class="group">
             <p><?php echo $data['todo'] ?></p>
             <p><?php echo $data['tododate'] ?></p>
             <div class="form">
