@@ -6,8 +6,11 @@ require_once(dirname(__FILE__) . '/DB.php');
 //タイムゾーン設定
 date_default_timezone_set('Asia/Tokyo');
 
+$year = isset($_GET['year']) ? (int)$_GET['year'] : (int)date('Y');
+$month = isset($_GET['month']) ? (int)$_GET['month'] : (int)date('m');
+
 //表示させる年月を設定 ↓これは現在の年月
-$currentDate = new DateTime('now', new DateTimeZone('Asia/Tokyo'));
+$currentDate = new DateTime("{$year}-{$month}-01", new DateTimeZone('Asia/Tokyo'));
 $year = $currentDate->format('Y');
 $month = $currentDate->format('m');
 $end_month = $currentDate->format('t'); //月末日取得
@@ -34,6 +37,7 @@ $arySchedulePrev = [];
 
 
 try {
+
     $db = new DB();
     $pdo = $db->getPDO();
     //現在の月の情報
@@ -52,8 +56,23 @@ try {
     $stmt->execute();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $day = (int) date('d', strtotime($row['tododate']));
-        $arySchedule[$day] = $row['todo'];
+        $tododate = new DateTime($row['tododate'], new DateTimeZone('Asia/Tokyo'));
+        $day = (int) $tododate->format('d');
+
+        //現在の月
+        if ($tododate->format('Y-m') === "{$year}-{$month}") {
+            $arySchedule[$day] = $row['todo'];
+        }
+
+        //来月
+        if ($tododate->format('Y-m') === "{$nextYear}-{$nextMonth}") {
+            $aryScheduleNext[$day] = $row['todo'];
+        }
+
+        //先月
+        if ($tododate->format('Y-m') === "{$prevYear}-{$prevMonth}") {
+            $arySchedulePrev[$day] = $row['todo'];
+        }
     }
 
 
