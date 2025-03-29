@@ -20,6 +20,10 @@ require_once __DIR__ . '/Models/carendar.php';
                 width: 100%;
             }
 
+            .calendar-month {
+                background-color: #f5fce8;
+            }
+
             table.calender_column td {
                 padding: 5px;
                 border: 1px solid #CCC;
@@ -53,12 +57,34 @@ require_once __DIR__ . '/Models/carendar.php';
                 color: #111111;
             }
 
-            button {
+            .prev_button {
                 padding: 10px 20px;
                 margin: 5px;
                 background-color: #add8e6;
                 border: none;
-                border-radius: 15px;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 5px;
+                line-height: 1.5;
+            }
+
+            .now_button {
+                padding: 10px 20px;
+                margin: 5px;
+                background-color: #add8e6;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 5px;
+                line-height: 1.5;
+            }
+
+            .next_button {
+                padding: 10px 20px;
+                margin: 5px;
+                background-color: #add8e6;
+                border: none;
+                border-radius: 3px;
                 cursor: pointer;
                 font-size: 5px;
                 line-height: 1.5;
@@ -81,20 +107,23 @@ require_once __DIR__ . '/Models/carendar.php';
         <p><a href="todo.php">戻る</a></p>
         <div style="text-align: center;">
             <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>">
-                <button>先月</button>
+                <button class="prev_button"><?php echo $prevMonth; ?>月</button>
             </a>
             <a href="?year=<?php echo date('Y'); ?>&month=<?php echo date('m'); ?>">
-                <button>今月</button>
+                <button class="now_button"><?php echo date('m'); ?>月</button>
             </a>
             <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>">
-                <button>来月</button>
+                <button class="next_button"><?php echo $nextMonth; ?>月</button>
             </a>
         </div>
-        <table class="calender_column"> <?php
+        <table class="calender_column">
+            <tr>
+                <th colspan="2" class="calendar-month"><?php echo "{$year}年 {$monthNames[(int)$month]}"; ?></th>
+            </tr> <?php
         // もし aryCalendar が存在し、内容があれば表示
         if (isset($aryCalendar) && is_array($aryCalendar) && !empty($aryCalendar)) {
             foreach ($aryCalendar as $value) {
-                if ($value['day'] != date('j')) {
+                if ($value['day'] != date('j')  && ($value['week'] !== null)) {
                     echo '<tr class="week' . $value['week'] . '">';
                 } else {
                     echo '<tr class="today">';
@@ -106,6 +135,7 @@ require_once __DIR__ . '/Models/carendar.php';
         } else {
             echo '<tr><td colspan="2">カレンダー情報がありません。</td></tr>';
         }
-        ?> </table>
+        ?>
+        </table>
     </body>
 </html>
