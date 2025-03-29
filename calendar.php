@@ -80,13 +80,13 @@ require_once __DIR__ . '/Models/carendar.php';
         <h1>カレンダー</h1>
         <p><a href="todo.php">戻る</a></p>
         <div style="text-align: center;">
-            <a href="?year=<?php echo $prevYear; ?>$month=<?php echo $prevMonth; ?>">
+            <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>">
                 <button>先月</button>
             </a>
-            <a href="?year=<?php echo $prevYear; ?>$month=<?php echo $prevMonth; ?>">
+            <a href="?year=<?php echo date('Y'); ?>&month=<?php echo date('m'); ?>">
                 <button>今月</button>
             </a>
-            <a href="?year=<?php echo $prevYear; ?>$month=<?php echo $prevMonth; ?>">
+            <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>">
                 <button>来月</button>
             </a>
         </div>
