@@ -8,42 +8,50 @@ require_once __DIR__ . '/Models/carendar.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>カレンダー</title>
         <style>
-            table.calender_column{
-    width: 100%;
-}
+            body {
+                background-color: #eaf6fd;
+            }
 
-table.calender_column td{
-    padding: 5px;
-    border: 1px solid #CCC;
-}
+            tbody {
+                background-color: #fff;
+            }
 
-/* 日曜日 */
-table.calender_column tr.week0{
-    background-color: #ffefef;
-    color: #FF0000;
-}
+            table.calender_column {
+                width: 100%;
+            }
 
-/* 土曜日 */
-table.calender_column tr.week6{
-    background-color: #ededff;
-    color: #0000FF;
-}
+            table.calender_column td {
+                padding: 5px;
+                border: 1px solid #CCC;
+            }
 
-/* 今日 */
-table.calender_column tr.today{
-    background-color: #fbffa3;
-    font-weight: bold;
-}
+            /* 日曜日 */
+            table.calender_column tr.week0 {
+                background-color: #ffefef;
+                color: #FF0000;
+            }
 
-table.calender_column td:first-child{
-    width: 20%;
-    text-align: center;
-}
+            /* 土曜日 */
+            table.calender_column tr.week6 {
+                background-color: #ededff;
+                color: #0000FF;
+            }
 
-table.calender_column td:last-child{
-    width: 80%;
-    color: #111111;
-}
+            /* 今日 */
+            table.calender_column tr.today {
+                background-color: #fbffa3;
+                font-weight: bold;
+            }
+
+            table.calender_column td:first-child {
+                width: 20%;
+                text-align: center;
+            }
+
+            table.calender_column td:last-child {
+                width: 80%;
+                color: #111111;
+            }
         </style>
     </head>
     <body>
